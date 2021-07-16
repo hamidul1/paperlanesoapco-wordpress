@@ -1,0 +1,148 @@
+html {
+    scroll-snap-type: y mandatory;
+}
+
+.navigation {
+    width: calc(100% - 2em);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    position: fixed;
+    z-index: 2;
+    background: rgba(255, 255, 255, 1);
+}
+
+.navigation-logo {
+    text-align: center;
+}
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 5.395em 1em 0em 0em;
+    background: rgba(255, 255, 255, 1);
+    display: none;
+    padding: 1em;
+}
+
+.cart > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart > ul > li {
+    display: flex;
+    align-items: center;
+}
+
+.home, .page, .index-footer {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    scroll-snap-align: start;
+}
+
+.home {
+    justify-content: space-between;
+}
+
+.page, .index-footer {
+    justify-content: center;
+}
+
+.home-ul {
+    margin: 0em 1em 0em 0em;
+    padding: 0;
+    list-style: none;
+}
+
+.home-li {
+    text-align: center;
+}
+
+.home-li > img {
+    width: 50px;
+}
+
+.home-main-img {
+    width: 250px;
+}
+
+.page-link {
+    display: flex;
+    align-items: center;
+    margin: 1em;
+    justify-content: space-between;
+}
+
+.page-link > img {
+    width: 100px;
+}
+
+.page-link > p {
+    margin: 0em 2em;
+}
+
+.page-link > i {
+    font-size: 2em;
+}
+
+.socialbuttons {
+    text-align: center;
+}
+
+.socialbuttons > a > i {
+    font-size: 2em;
+    margin: .5em;
+}
+
+.product, .about {
+    margin: auto; 
+}
+
+.product {
+    padding: 5.395em 0em 0em 0em;
+    max-width: 500px;
+}
+
+.product > img {
+    width: 100%;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 2em);
+    background: rgba(255, 255, 255, 1);
+    padding: 1em;
+    align-items: center;
+}
+
+.about {
+    padding: 10.395em 0em 0em 0em;
+    columns: 200px 2;
+    max-width: 800px;
+}
+
+.about > p:first-of-type {
+    margin: 0em 0em 1em 0em;
+}
+
+@media (min-width: 900px) {
+    .home-li > img {
+        width: 75px;
+    }
+
+    .home-main-img {
+        width: 300px;
+    }
+
+    .socialbuttons > a > i {
+        margin: 1em;
+    }
+}

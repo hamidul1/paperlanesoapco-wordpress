@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'CopperPlate-Bold-Italic';
+    src: url('../fonts/CopperPlate-Bold-Italic.woff2') format('woff2'),
+         url('../fonts/CopperPlate-Bold-Italic.woff') format('woff')
+}
+
+body {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navigation, .product-footer, .cart {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.navigation-logo {
+    font-family: 'CopperPlate-Bold-Italic';
+}
+
+.navigation-logo > h1 {
+    font-size: 1.17em;
+    margin: .5em 0em .125em 0em;
+}
+
+.navigation-logo > h2 {
+    font-size: .83em;
+    margin: .125em 0em .5em 0em;
+}
