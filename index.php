@@ -1,4 +1,5 @@
-<?php get_header();
+<?php if (!defined('ABSPATH')) exit;
+get_header();
 $getalloptions = get_option('theme_front_page'); ?>
     <section class="home">
         <span class="spacer"></span>
@@ -17,7 +18,7 @@ $getalloptions = get_option('theme_front_page'); ?>
                     <p><?php echo !empty($getalloptions['third_icon_text']) ? $getalloptions['third_icon_text'] : 'Australian'; ?></p>
                 </li>
             </ul>
-            <img class="home-main-img" src="<?php echo !empty($getalloptions['girl_img']) ? $getalloptions['girl_img'] :  get_template_directory_uri().'/img/main.png'; ?>" alt="">
+            <img class="home-main-img" src="<?php echo !empty($getalloptions['girl_img']) ? $getalloptions['girl_img'] :  get_template_directory_uri().'/img/main.jpg'; ?>" alt="">
         </div>
         <div style="text-align: center; width: calc(100% - 2em); padding: 1em;">
             <p>
