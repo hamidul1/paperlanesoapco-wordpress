@@ -1,4 +1,5 @@
-<?php get_header(); ?>
+<?php if (!defined('ABSPATH')) exit;
+get_header(); ?>
         <?php 
         /* Start the Loop */
         woocommerce_content(); 
