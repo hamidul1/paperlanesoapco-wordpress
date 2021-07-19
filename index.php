@@ -1,5 +1,4 @@
-<?php if (!defined('ABSPATH')) exit;
-get_header();
+<?php get_header();
 $getalloptions = get_option('theme_front_page'); ?>
     <section class="home">
         <span class="spacer"></span>
