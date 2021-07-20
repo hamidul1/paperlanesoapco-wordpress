@@ -8,7 +8,15 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php wp_head(); ?>
+    <?php wp_head();
+            if (is_cart()) { ?>
+            <style type="text/css">
+                .woocommerce table.shop_table {
+                    display: block;
+                    position: inherit;
+                }
+            </style>
+    <?php } ?>    
 </head>
 <body>
     <header class="navigation">

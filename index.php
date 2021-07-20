@@ -30,6 +30,21 @@ $getalloptions = get_option('theme_front_page'); ?>
     <section class="page">
         <h1><?php echo !empty($getalloptions['store_title']) ? $getalloptions['store_title'] : 'Store'; ?></h1>
         <div class="page-links">
+            <?php 
+            $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => -1
+            );
+            $loop = new WP_Query( $args );
+            if ( $loop->have_posts() ) {
+            while ( $loop->have_posts() ) : $loop->the_post(); ?>
+            <a class="page-link" href="<?php the_permalink(); ?>">
+                <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()); ?>" alt="">
+                <p><?php the_title(); ?></p>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+            <?php endwhile;
+            } else { ?>
             <a class="page-link" href="<?php echo !empty($getalloptions['product_link_one']) ? $getalloptions['product_link_one'] : '#'; ?>">
                 <img src="<?php echo !empty($getalloptions['product_img_one']) ? $getalloptions['product_img_one'] :  get_template_directory_uri().'/img/bar-square.jpg'; ?>" alt="">
                 <p><?php echo !empty($getalloptions['product_text_one']) ? $getalloptions['product_text_one'] : 'Bar soap'; ?></p>
@@ -40,6 +55,8 @@ $getalloptions = get_option('theme_front_page'); ?>
                 <p><?php echo !empty($getalloptions['product_text_two']) ? $getalloptions['product_text_two'] : 'Liquid soap'; ?></p>
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
+            <?php }
+            wp_reset_postdata(); ?>
         </div>
     </section>
     <section class="page">

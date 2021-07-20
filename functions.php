@@ -568,3 +568,11 @@ function show_data_checkout_create_order_line_item( $item, $cart_item_key, $valu
  }
 }
 add_action( 'woocommerce_checkout_create_order_line_item', 'show_data_checkout_create_order_line_item', 10, 4 );
+
+
+add_filter( 'woocommerce_return_to_shop_redirect', 'custom_empty_cart_redirect_url' );
+function custom_empty_cart_redirect_url(){
+
+return home_url('/');
+
+}
