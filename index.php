@@ -39,8 +39,17 @@ $getalloptions = get_option('theme_front_page'); ?>
             if ( $loop->have_posts() ) {
             while ( $loop->have_posts() ) : $loop->the_post(); ?>
             <a class="page-link" href="<?php the_permalink(); ?>">
+                <?php ?>
+                <?php if (get_post_meta(get_the_ID(), 'add_img_for_home', true)) { ?>
+                <img src="<?php echo get_post_meta(get_the_ID(), 'add_img_for_home', true); ?>" alt="">
+                <?php }else{ ?>
                 <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()); ?>" alt="">
+                <?php } ?>                
+                <?php if (get_post_meta(get_the_ID(), 'add_title_for_home', true)) { ?>
+                <p><?php echo get_post_meta(get_the_ID(), 'add_title_for_home', true); ?></p>
+                <?php }else{ ?>
                 <p><?php the_title(); ?></p>
+                <?php } ?>
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
             <?php endwhile;

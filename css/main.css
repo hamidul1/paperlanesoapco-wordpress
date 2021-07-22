@@ -146,3 +146,7 @@ html {
         margin: 1em;
     }
 }
+
+.cart_item_remove{
+    margin-left: 10px;
+}

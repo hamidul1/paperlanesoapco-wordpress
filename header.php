@@ -38,11 +38,12 @@
         <div class="cart" id="cart">
             <ul>
                 <?php if (!empty($getcartcontent)) {
-                    foreach ($getcartcontent as $productobject) { 
+                    foreach ($getcartcontent as $cart_item_key => $productobject) { 
                         $getpostthumbnailid = get_post_thumbnail_id($productobject['product_id']); ?>
                         <li>
                                  <img src="<?php echo wp_get_attachment_url($getpostthumbnailid); ?>" alt="" width="100">
                             <p><?php echo $productobject['quantity']; ?> X <?php echo get_the_title($productobject['product_id']); ?></p>
+                            <span style="margin-left: 10px;"><a href="<?php echo wc_get_cart_remove_url( $cart_item_key ); ?>">X</a></span>
                         </li>
                    <?php  }
                 } ?>

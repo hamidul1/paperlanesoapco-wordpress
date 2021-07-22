@@ -576,3 +576,6 @@ function custom_empty_cart_redirect_url(){
 return home_url('/');
 
 }
+
+/* Include Custom Post Meta Class */
+require_once 'inc/post_meta_class.php';
