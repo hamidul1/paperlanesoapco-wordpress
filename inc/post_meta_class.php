@@ -5,11 +5,11 @@
      * Set up and add the meta box.
      */
     public static function add() {
-        $screens = [ 'product' ];
+        $screens = [ 'product', 'page' ];
         foreach ( $screens as $screen ) {
             add_meta_box(
                 'paper_lane_soap_box_id',          // Unique ID
-                'Alternative Title Option', // Box title
+                'Extra Options', // Box title
                 [ self::class, 'html' ],   // Content callback, must be of type callable
                 $screen                  // Post type
             );
@@ -28,6 +28,9 @@
         }
         if ( array_key_exists( 'add_img_for_home', $_POST ) ) {
             update_post_meta( $post_id, 'add_img_for_home', $_POST['add_img_for_home']);  
+        }        
+        if ( array_key_exists( 'show_this_page_at_home', $_POST ) ) {
+            update_post_meta( $post_id, 'show_this_page_at_home', $_POST['show_this_page_at_home']);  
         }
     }
  
@@ -40,13 +43,15 @@
     public static function html( $post ) {
         $add_title_for_home = get_post_meta( $post->ID, 'add_title_for_home', true );
         $add_img_for_home = get_post_meta( $post->ID, 'add_img_for_home', true );
+        $show_this_page_at_home = get_post_meta( $post->ID, 'show_this_page_at_home', true );
         wp_enqueue_media();
         ?>
         <style type="text/css">
             .field_div{margin-bottom: 15px;}
             .field_div label{width: 20%;display: inline-block;font-size: 15px;}
-            .field_div input{margin-top: 10px;height: 35px;font-size: 15px;width: 78%;}
+            .field_div input[type=text]{margin-top: 10px;height: 35px;font-size: 15px;width: 78%;}
         </style>
+        <?php if ($post->post_type == 'product') { ?>
         <div class="field_div">
             <label for="add_title_for_home_page">Add Title For Home Page</label>
             <input type="text" name="add_title_for_home" value="<?php echo $add_title_for_home; ?>">       
@@ -54,7 +59,18 @@
         <div class="field_div">
             <label for="add_featured_img_for_home_page">Add Featured For Home Page</label>
             <input type="text" name="add_img_for_home" class="add_img_for_home" value="<?php echo $add_img_for_home; ?>">       
-        </div>        
+        </div> 
+        <?php  } ?>
+        <?php if ($post->post_type == 'page') { ?>
+        <div class="field_div">
+            <label for="show_this_page_at_home">Show This Page at Home Page</label>
+            <input type="checkbox" id="show_this_page_at_home" name="show_this_page_at_home" <?php if($show_this_page_at_home == 'yes'){ echo 'checked'; } ?> value="yes">       
+        </div>       
+        <div class="field_div">
+            <label for="add_featured_img_for_home_page">Add Featured For Home Page</label>
+            <input type="text" name="add_img_for_home" class="add_img_for_home" value="<?php echo $add_img_for_home; ?>">       
+        </div> 
+        <?php  } ?>                
         <div class="field_div">
             <input type="submit" class="" value="Update">       
         </div>

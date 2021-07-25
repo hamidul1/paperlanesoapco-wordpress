@@ -9,13 +9,31 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head();
-            if (is_cart()) { ?>
+    if (is_cart() || is_checkout()) { ?>
             <style type="text/css">
                 .woocommerce table.shop_table {
                     display: block;
                     position: inherit;
                 }
+                .about{
+                    columns:inherit;
+                    margin-bottom: 40px;
+                }
+                .woocommerce table.cart img{
+                    max-width: 150px;
+                }
             </style>
+    <?php }   
+    if (is_page()) { ?>
+    <style type="text/css">
+        .about{
+            margin-bottom: 60px;
+        }
+        .about img{
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
     <?php } ?>    
 </head>
 <body>
@@ -41,8 +59,11 @@
                     foreach ($getcartcontent as $cart_item_key => $productobject) { 
                         $getpostthumbnailid = get_post_thumbnail_id($productobject['product_id']); ?>
                         <li>
-                                 <img src="<?php echo wp_get_attachment_url($getpostthumbnailid); ?>" alt="" width="100">
+                            <img src="<?php echo wp_get_attachment_url($getpostthumbnailid); ?>" alt="" width="100">
                             <p><?php echo $productobject['quantity']; ?> X <?php echo get_the_title($productobject['product_id']); ?></p>
+                            <?php if (!empty($productobject['fragrance_value'])) { ?>
+                               <span>Fragrance: <?php echo $productobject['fragrance_value']; ?></span>
+                            <?php } ?>
                             <span style="margin-left: 10px;"><a href="<?php echo wc_get_cart_remove_url( $cart_item_key ); ?>">X</a></span>
                         </li>
                    <?php  }

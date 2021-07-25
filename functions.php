@@ -579,3 +579,14 @@ return home_url('/');
 
 /* Include Custom Post Meta Class */
 require_once 'inc/post_meta_class.php';
+
+function home_page_icon_setup_post_type() {
+    $args = array(
+        'public'    => true,
+        'label'     => __( 'Home Icon', 'textdomain' ),
+        'menu_icon' => 'dashicons-book',
+        'supports' => array('title', 'thumbnail'),
+    );
+    register_post_type( 'home_icon', $args );
+}
+add_action( 'init', 'home_page_icon_setup_post_type' );

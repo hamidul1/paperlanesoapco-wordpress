@@ -2,20 +2,24 @@
 $getalloptions = get_option('theme_front_page'); ?>
     <section class="home">
         <span class="spacer"></span>
-        <div style="display: flex; align-items: center; justify-content: center;">
+        <div style="display: flex; align-items: start; justify-content: center;">
             <ul class="home-ul">
+            <?php 
+            $args = array(
+            'post_type' => 'home_icon',
+            'posts_per_page' => 3,
+            'order'   => 'ASC',
+            );
+            $loop = new WP_Query( $args );
+            if ( $loop->have_posts() ) {
+            while ( $loop->have_posts() ) : $loop->the_post(); ?>    
                 <li class="home-li">
-                    <img src="<?php echo !empty($getalloptions['first_icon_img']) ? $getalloptions['first_icon_img'] :  get_template_directory_uri().'/img/world.png'; ?>" alt="">
-                    <p><?php echo !empty($getalloptions['first_icon_text']) ? $getalloptions['first_icon_text'] : 'Earth Safe'; ?></p>
+                    <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id()); ?>" alt="<?php the_title(); ?>">
+                    <p><?php the_title(); ?></p>
                 </li>
-                <li class="home-li">
-                    <img src="<?php echo !empty($getalloptions['scound_icon_img']) ? $getalloptions['scound_icon_img'] :  get_template_directory_uri().'/img/hand.png'; ?>" alt="">
-                    <p><?php echo !empty($getalloptions['scound_icon_text']) ? $getalloptions['scound_icon_text'] : 'Hand Made'; ?></p>
-                </li>
-                <li class="home-li">
-                    <img src="<?php echo !empty($getalloptions['scound_icon_img']) ? $getalloptions['scound_icon_img'] :  get_template_directory_uri().'/img/australia.png'; ?>" alt="">
-                    <p><?php echo !empty($getalloptions['third_icon_text']) ? $getalloptions['third_icon_text'] : 'Australian'; ?></p>
-                </li>
+            <?php endwhile;
+            } else {  }
+            wp_reset_postdata(); ?>                
             </ul>
             <img class="home-main-img" src="<?php echo !empty($getalloptions['girl_img']) ? $getalloptions['girl_img'] :  get_template_directory_uri().'/img/main.jpg'; ?>" alt="">
         </div>
@@ -71,21 +75,23 @@ $getalloptions = get_option('theme_front_page'); ?>
     <section class="page">
         <h1><?php echo !empty($getalloptions['learn_title']) ? $getalloptions['learn_title'] : 'Learn'; ?></h1>
         <div class="page-links">
-            <a class="page-link" href="<?php echo !empty($getalloptions['learn_link_one']) ? $getalloptions['learn_link_one'] : '#'; ?>">
-                <img src="<?php echo !empty($getalloptions['learn_img_one']) ? $getalloptions['learn_img_one'] : 'http://placehold.it/100'; ?>" alt="">
-                <p><?php echo !empty($getalloptions['learn_text_one']) ? $getalloptions['learn_text_one'] : 'Experts'; ?></p>
+            <?php $args = array(
+            'post_type' => 'page',
+            'posts_per_page' => -1
+            );
+            $loop = new WP_Query( $args );
+            if ( $loop->have_posts() ) {
+            while ( $loop->have_posts() ) : $loop->the_post();
+            if (get_post_meta(get_the_ID(), 'show_this_page_at_home', true) == 'yes') { ?>            
+            <a class="page-link" href="<?php the_permalink(); ?>">
+                <img src="<?php echo !empty(get_post_meta(get_the_ID(), 'add_img_for_home', true)) ? get_post_meta(get_the_ID(), 'add_img_for_home', true) : 'http://placehold.it/100'; ?>" alt="">
+                <p><?php the_title(); ?></p>
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
-            <a class="page-link" href="<?php echo !empty($getalloptions['learn_link_two']) ? $getalloptions['learn_link_two'] : '#'; ?>">
-                <img src="<?php echo !empty($getalloptions['learn_img_two']) ? $getalloptions['learn_img_two'] : 'http://placehold.it/100'; ?>" alt="">
-                <p><?php echo !empty($getalloptions['learn_text_two']) ? $getalloptions['learn_text_two'] : 'Process'; ?></p>
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
-            <a class="page-link" href="<?php echo !empty($getalloptions['learn_link_three']) ? $getalloptions['learn_link_three'] : '#'; ?>">
-                <img src="<?php echo !empty($getalloptions['learn_img_three']) ? $getalloptions['learn_img_three'] : 'http://placehold.it/100'; ?>" alt="">
-                <p><?php echo !empty($getalloptions['learn_text_three']) ? $getalloptions['learn_text_three'] : 'Company'; ?></p>
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </a>
+            <?php } endwhile;
+            } else { ?> 
+            <?php }
+            wp_reset_postdata(); ?>                       
         </div>
     </section>
     <footer class="index-footer">

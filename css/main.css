@@ -108,6 +108,7 @@ html {
 .product {
     padding: 5.395em 0em 0em 0em;
     max-width: 500px;
+    margin-bottom: 60px;
 }
 
 .product > img {
@@ -124,7 +125,7 @@ html {
 }
 
 .about {
-    padding: 10.395em 0em 0em 0em;
+    padding: 6.395em 0em 0em 0em;
     columns: 200px 2;
     max-width: 800px;
 }
@@ -148,5 +149,9 @@ html {
 }
 
 .cart_item_remove{
-    margin-left: 10px;
+   
+}
+
+.navigation a:first-child{
+    width: 40px;
 }
