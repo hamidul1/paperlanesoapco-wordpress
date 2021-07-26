@@ -10,19 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head();
     if (is_cart() || is_checkout()) { ?>
-            <style type="text/css">
-                .woocommerce table.shop_table {
-                    display: block;
-                    position: inherit;
-                }
-                .about{
-                    columns:inherit;
-                    margin-bottom: 40px;
-                }
-                .woocommerce table.cart img{
-                    max-width: 150px;
-                }
-            </style>
+        <style type="text/css">
+            .woocommerce table.shop_table {
+                display: block;
+                position: inherit;
+            }
+            .about{
+                columns:inherit;
+                margin-bottom: 40px;
+            }
+            .woocommerce table.cart img{
+                max-width: 150px;
+            }
+            .woocommerce-message {
+                display: none;
+            }            
+        </style>
     <?php }   
     if (is_page()) { ?>
     <style type="text/css">
@@ -30,7 +33,7 @@
             margin-bottom: 60px;
         }
         .about img{
-            margin-left: 10px;
+            margin-right: 10px;
             margin-bottom: 10px;
         }
     </style>
