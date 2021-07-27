@@ -134,17 +134,36 @@ html {
     margin: 0em 0em 1em 0em;
 }
 
-@media (min-width: 900px) {
-    .home-li > img {
-        width: 75px;
+@media (max-width: 1370px) {
+    .home_top_section{
+        margin-top: 100px;        
     }
 
     .home-main-img {
         width: 300px;
     }
+    .home-li > img {
+        width: 70px;
+    }    
+
+}
+
+
+@media (max-width: 1000px) {
+    .home-li > img {
+        width: 75px;
+    }
+
+    .home-main-img {
+        width: auto;
+        height: 380px;
+    }
 
     .socialbuttons > a > i {
         margin: 1em;
+    }
+    .home_top_section{
+        margin-top: 90px;        
     }
 }
 

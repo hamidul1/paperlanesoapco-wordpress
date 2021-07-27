@@ -39,7 +39,7 @@ global $product;
             	<?php ?>
             	<?php  if (!empty($Fragrance)) {
 						foreach ($Fragrance as $valuekey => $mainvalue) {
-							echo "<option value=".$mainvalue.">".$mainvalue."</option>";
+							echo "<option value='".$mainvalue."'>".$mainvalue."</option>";
 						}
             	} ?>
             </select>

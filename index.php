@@ -2,7 +2,7 @@
 $getalloptions = get_option('theme_front_page'); ?>
     <section class="home">
         <span class="spacer"></span>
-        <div style="display: flex; align-items: start; justify-content: center;">
+        <div class="home_top_section" style="display: flex; align-items: start; justify-content: center;">
             <ul class="home-ul">
             <?php 
             $args = array(

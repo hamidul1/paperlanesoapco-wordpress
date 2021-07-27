@@ -65,7 +65,7 @@
                             <img src="<?php echo wp_get_attachment_url($getpostthumbnailid); ?>" alt="" width="100">
                             <p><?php echo $productobject['quantity']; ?> X <?php echo get_the_title($productobject['product_id']); ?></p>
                             <?php if (!empty($productobject['fragrance_value'])) { ?>
-                               <span>Fragrance: <?php echo $productobject['fragrance_value']; ?></span>
+                               ,<span style="margin-left: 10px;">Fragrance: <?php echo $productobject['fragrance_value']; ?></span>
                             <?php } ?>
                             <span style="margin-left: 10px;"><a href="<?php echo wc_get_cart_remove_url( $cart_item_key ); ?>">X</a></span>
                         </li>
